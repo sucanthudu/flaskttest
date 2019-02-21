@@ -14,9 +14,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False    #modification tracker(fl
 app.secret_key = 'kanny'                                #key for creating authentication
 api = Api(app)                                          #wrap
 
-# @app.before_first_request
-# def create_tables():                                  #create db and create_tables with columns
-#     db.create_all()
+@app.before_first_request
+def create_tables():                                  #create db and create_tables with columns
+    db.create_all()
 
 jwt = JWT(app, authenticate, identity)    #/auth
 
